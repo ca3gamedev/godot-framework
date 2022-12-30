@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Dungeon/Dungeon.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Dungeon/Tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://Scenes/Dungeon/DungeonGenerator.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Dungeon/TileMap.gd" type="Script" id=4]
+
+[node name="Map" type="Node2D"]
+
+[node name="Dungeon" type="Node" parent="."]
+script = ExtResource( 1 )
+MapSize = Vector2( 20, 20 )
+MaxRoomSize = Vector2( 9, 9 )
+NumberRooms = 5
+
+[node name="DungeonGenerator" type="Node" parent="Dungeon"]
+script = ExtResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="Dungeon"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+script = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 500, 284 )
+current = true
+zoom = Vector2( 1.5, 1.5 )
